@@ -13,19 +13,13 @@ for (i = 1; i <= taskCount; i++) {
         showTaskInApp(task);
 }
 
-
 addTaskBtn.addEventListener('click', (e) => {
     const task = input.value; // get task from user
     taskCount++;
-    addToStorage(taskCount, task); // add task to storage
+    localStorage.setItem(taskCount, task);  // add task to storage
     showTaskInApp(task)
     e.preventDefault();
 });
-
-function addToStorage(key, value) {
-    localStorage.setItem(key, value);
-    console.log("Database updated");
-}
 
 function showTaskInApp(name) {
     const div = document.createElement("div");
