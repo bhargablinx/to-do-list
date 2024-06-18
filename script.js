@@ -1,9 +1,16 @@
 const addTaskBtn = document.querySelector("#add-task-btn");
 const input = document.querySelector("#add-task");
 const taskContainer = document.querySelector(".tasks");
-let taskCount = parseInt(localStorage.key(""));
-if (NaN) {
-    taskCount = 0;
+let taskCount = localStorage.length;
+
+// add all the task from the local storage after the page is loaded
+for (i = 1; i <= taskCount; i++) {
+    let task = localStorage.getItem(i);
+    if (task == null) {
+        continue;
+    }
+    else
+        showTaskInApp(task);
 }
 
 
@@ -28,6 +35,6 @@ function showTaskInApp(name) {
     checkBox.type = 'checkbox';
     div.appendChild(checkBox);
     const taskName = document.createElement("span");
-    taskName.textContent = localStorage.getItem(taskCount);
+    taskName.textContent = name;
     div.appendChild(taskName);
 }
