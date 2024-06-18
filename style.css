@@ -40,4 +40,11 @@ body {
 input[type="checkbox"]{
     width: 20px;
     height: 20px;
-  }
+}
+
+button {
+    padding: 5px;
+    background-color: #4a4a4a;
+    color: white;
+    border-radius: 7px;
+}
