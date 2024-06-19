@@ -1,6 +1,7 @@
+const container = document.querySelector(".container")
 const addTaskBtn = document.querySelector("#add-task-btn");
 const input = document.querySelector("#add-task");
-const taskContainer = document.querySelector(".tasks");
+let taskContainer = document.querySelector(".tasks");
 let allTask = [];
 let allTaskJson = [];
 let allRetrieveTask = [];
@@ -41,9 +42,17 @@ function showTaskInApp(name) {
 }
 
 function updateDOM() {
-    for (i = 0; i < allRetrieveTask.length; i++) {
+    for (let i = 0; i < allRetrieveTask.length; i++) {
         showTaskInApp(allRetrieveTask[i]);
     }
+}
+
+function clearDOM() {
+    console.log(taskContainer);
+    taskContainer.remove()
+    taskContainer = document.createElement('div');
+    taskContainer.className = "tasks"
+    container.appendChild(taskContainer);
 }
 
 updateDOM();
@@ -58,7 +67,9 @@ deleteBtn.forEach((element) => {
         allTaskJson = JSON.stringify(allTask);
         localStorage.setItem('task', allTaskJson);
         // clear DOM then Update DOM
+        clearDOM();
         updateDOM();
+        console.log("Deleted");
     });
 });
 
