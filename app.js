@@ -31,6 +31,7 @@ function showTaskInApp(name) {
     taskContainer.appendChild(div);
     const checkBox = document.createElement("input");
     checkBox.type = 'checkbox';
+    checkBox.className = 'checkbox'
     div.appendChild(checkBox);
     const taskName = document.createElement("span");
     taskName.textContent = name;
@@ -77,3 +78,15 @@ function removeElementFromArray(index) {
         console.log("Task deleted");
     }
 }
+
+const allCheckBox = document.querySelectorAll('.checkbox');
+
+allCheckBox.forEach((item) => {
+    console.log(item);
+    item.addEventListener('click', () => {
+        if (item.checked === true) {
+            item.nextSibling.className = 'checked-task'
+            console.log("Checked");
+        }
+    });
+});
