@@ -36,6 +36,7 @@ function showTaskInApp(name) {
     div.appendChild(taskName);
     const dtnBtn = document.createElement("button")
     dtnBtn.textContent = "Delete"
+    dtnBtn.id = "delete"
     div.appendChild(dtnBtn);
 }
 
@@ -46,3 +47,24 @@ function updateDOM() {
 }
 
 updateDOM();
+
+const deleteBtn = document.querySelectorAll("#delete");
+
+deleteBtn.forEach((element) => {
+    element.addEventListener('click', (e) => {
+        let task = element.parentNode.childNodes[1].textContent;;
+        let index = parseInt(allTask.indexOf(task));
+        removeElementFromArray(index);
+        allTaskJson = JSON.stringify(allTask);
+        localStorage.setItem('task', allTaskJson);
+        // clear DOM then Update DOM
+        updateDOM();
+    });
+});
+
+function removeElementFromArray(index) {
+    if (index > -1) { // only splice array when item is found
+        allRetrieveTask.splice(index, 1); // 2nd parameter means remove one item only
+        console.log("Task deleted");
+    }
+}
