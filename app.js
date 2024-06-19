@@ -37,7 +37,7 @@ function showTaskInApp(name) {
     div.appendChild(taskName);
     const dtnBtn = document.createElement("button")
     dtnBtn.textContent = "Delete"
-    dtnBtn.id = "delete"
+    dtnBtn.className = "delete"
     div.appendChild(dtnBtn);
 }
 
@@ -45,19 +45,20 @@ function updateDOM() {
     for (let i = 0; i < allRetrieveTask.length; i++) {
         showTaskInApp(allRetrieveTask[i]);
     }
+    console.log("DOM Updated");
 }
 
 function clearDOM() {
-    console.log(taskContainer);
     taskContainer.remove()
     taskContainer = document.createElement('div');
     taskContainer.className = "tasks"
     container.appendChild(taskContainer);
+    console.log("Task Container Cleared");
 }
 
 updateDOM();
 
-const deleteBtn = document.querySelectorAll("#delete");
+const deleteBtn = document.querySelectorAll(".delete");
 
 deleteBtn.forEach((element) => {
     element.addEventListener('click', (e) => {
@@ -66,10 +67,7 @@ deleteBtn.forEach((element) => {
         removeElementFromArray(index);
         allTaskJson = JSON.stringify(allTask);
         localStorage.setItem('task', allTaskJson);
-        // clear DOM then Update DOM
-        clearDOM();
-        updateDOM();
-        console.log("Deleted");
+        location.reload();
     });
 });
 
