@@ -35,6 +35,8 @@ body {
     flex: 1;
     margin: 5px;
     font-size: 1.3rem;
+    display: flex;
+    align-items: center;
 }
 
 input[type="checkbox"]{
@@ -47,4 +49,13 @@ input[type="checkbox"]{
     background-color: #4a4a4a;
     color: white;
     border-radius: 7px;
+}
+
+.row button {
+    margin-left: auto;
+    background-color: red;
+    color: aliceblue;
+    border-radius: 9px;
+    padding: 4px;
+    font-size: 0.7rem;
 }

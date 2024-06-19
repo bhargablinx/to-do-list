@@ -34,6 +34,9 @@ function showTaskInApp(name) {
     const taskName = document.createElement("span");
     taskName.textContent = name;
     div.appendChild(taskName);
+    const dtnBtn = document.createElement("button")
+    dtnBtn.textContent = "Delete"
+    div.appendChild(dtnBtn);
 }
 
 function updateDOM() {
