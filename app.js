@@ -1,6 +1,7 @@
+const container = document.querySelector(".container")
 const addTaskBtn = document.querySelector("#add-task-btn");
 const input = document.querySelector("#add-task");
-const taskContainer = document.querySelector(".tasks");
+let taskContainer = document.querySelector(".tasks");
 let allTask = [];
 let allTaskJson = [];
 let allRetrieveTask = [];
@@ -34,12 +35,45 @@ function showTaskInApp(name) {
     const taskName = document.createElement("span");
     taskName.textContent = name;
     div.appendChild(taskName);
+    const dtnBtn = document.createElement("button")
+    dtnBtn.textContent = "Delete"
+    dtnBtn.className = "delete"
+    div.appendChild(dtnBtn);
 }
 
 function updateDOM() {
-    for (i = 0; i < allRetrieveTask.length; i++) {
+    for (let i = 0; i < allRetrieveTask.length; i++) {
         showTaskInApp(allRetrieveTask[i]);
     }
+    console.log("DOM Updated");
+}
+
+function clearDOM() {
+    taskContainer.remove()
+    taskContainer = document.createElement('div');
+    taskContainer.className = "tasks"
+    container.appendChild(taskContainer);
+    console.log("Task Container Cleared");
 }
 
 updateDOM();
+
+const deleteBtn = document.querySelectorAll(".delete");
+
+deleteBtn.forEach((element) => {
+    element.addEventListener('click', (e) => {
+        let task = element.parentNode.childNodes[1].textContent;;
+        let index = parseInt(allTask.indexOf(task));
+        removeElementFromArray(index);
+        allTaskJson = JSON.stringify(allTask);
+        localStorage.setItem('task', allTaskJson);
+        location.reload();
+    });
+});
+
+function removeElementFromArray(index) {
+    if (index > -1) { // only splice array when item is found
+        allRetrieveTask.splice(index, 1); // 2nd parameter means remove one item only
+        console.log("Task deleted");
+    }
+}
