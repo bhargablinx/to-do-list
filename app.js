@@ -82,11 +82,12 @@ function removeElementFromArray(index) {
 const allCheckBox = document.querySelectorAll('.checkbox');
 
 allCheckBox.forEach((item) => {
-    console.log(item);
     item.addEventListener('click', () => {
         if (item.checked === true) {
             item.nextSibling.className = 'checked-task'
             console.log("Checked");
+        } else if (item.checked === false) {
+            item.nextSibling.className = ""
         }
     });
 });
