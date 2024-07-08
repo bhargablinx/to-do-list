@@ -6,11 +6,14 @@ const container = document.querySelector('.container');
 loadTaskFromStorage();
 updateArray();
 
-function createTask(name, duDate, status) {
-    this.name = name;
-    this.duDate = duDate;
-    this.status = status;
-    this.add = function addToArray() {
+class Task {
+    constructor(name, duDate, status) {
+        this.name = name;
+        this.duDate = duDate;
+        this.status = status;
+    }
+
+    addToArray() {
         taskArray.push(this);
     }
 }
@@ -22,25 +25,26 @@ function app() {
         addTask();
         e.preventDefault();
     });
-     
 }
-
-// ---BREAKDOWN---
 
 // ADDING TASK
 function addTask() {
     const input = document.querySelector('.input-field');
     let taskName = input.value;
-    let task = new createTask(taskName, 'due date', 'not started');
-    task.add();
+    let task = new Task(taskName, 'due date', 'not started');
+    task.addToArray();
     pushToStorage();
-    showTaskInDOM(taskName);
+    showTaskInDOM(task);
 }
 
-// SHOW ADDED SHOW
+// SHOW ADDED TASK
 function showTaskInDOM(task) {
-    const sContainer = document.querySelector('.container');
+    const taskItem = document.createElement('div');
+    taskItem.classList.add('task-item');
+
     const p = document.createElement('p');
+    p.textContent = task.name;
+
     const ck = document.createElement('input');
     ck.type = 'checkbox';
     ck.addEventListener('change', () => {
@@ -49,14 +53,15 @@ function showTaskInDOM(task) {
             updateArray();
         }
     });
-    p.textContent = task.name;
-    sContainer.appendChild(p);
-    sContainer.appendChild(ck);
+
+    taskItem.appendChild(p);
+    taskItem.appendChild(ck);
+    container.appendChild(taskItem);
 }
 
-// STORAGE AREAS
+// STORAGE HANDLING
 function pushToStorage() {
-    localStorage.setItem('tasks', JSON.stringify(taskArray))
+    localStorage.setItem('tasks', JSON.stringify(taskArray));
 }
 
 function loadTaskFromStorage() {
@@ -67,14 +72,6 @@ function loadTaskFromStorage() {
 }
 
 // UTILS
-function removeItemOnce(arr, value) {
-    let index = arr.indexOf(value);
-    if (index > -1) {
-      arr.splice(index, 1);
-    }
-    return arr;
-}
-
 function updateArray() {
     taskArray = taskArray.filter(element => element.status !== 'completed');
     pushToStorage();
@@ -95,12 +92,5 @@ window.onload = function () {
     refreshDOM();
 }
 
-// let task = new createTask('Wash', '2024-07-15', 'not started');
-// task.add();
-// task = new createTask('Clean', '2024-07-15', 'not started');
-// task.add();
-// task = new createTask('Delete Useless Task', '2024-07-15', 'not started');
-// task.add();
-// pushToStorage()
-
+// Initialize the app
 app();
