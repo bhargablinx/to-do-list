@@ -63,4 +63,5 @@ body {
 
 .task-item input[type="checkbox"] {
     margin-left: 10px;
+    cursor: pointer;
 }
