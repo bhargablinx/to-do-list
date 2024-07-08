@@ -1,6 +1,7 @@
 let taskArray = [];
 
 loadTaskFromStorage();
+updateArray();
 
 function createTask(name, duDate, status) {
     this.name = name;
@@ -9,14 +10,6 @@ function createTask(name, duDate, status) {
     this.add = function addToArray() {
         taskArray.push(this);
     }
-}
-
-function updateArray() {
-    taskArray.forEach((element) => {
-        if (element.status === 'completed') {
-            removeItemOnce(taskArray, element)
-        }
-    });
 }
 
 // DOM
@@ -65,6 +58,15 @@ function removeItemOnce(arr, value) {
       arr.splice(index, 1);
     }
     return arr;
+}
+
+function updateArray() {
+    taskArray.forEach((element) => {
+        if (element.status === 'completed') {
+            removeItemOnce(taskArray, element);
+        }
+    });
+    pushToStorage();
 }
 
 // ONE PAGE LOAD & SHOW TASKS FROM Local Storage
