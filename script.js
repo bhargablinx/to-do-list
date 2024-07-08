@@ -1,5 +1,8 @@
 let taskArray = [];
 
+const bContainer = document.querySelector('.b-container');
+const container = document.querySelector('.container');
+
 loadTaskFromStorage();
 updateArray();
 
@@ -35,11 +38,20 @@ function addTask() {
 }
 
 // SHOW ADDED SHOW
-function showTaskInDOM(taskName) {
-    const body = document.querySelector('body');
-    const div = document.createElement('div');
-    div.textContent = taskName;
-    body.appendChild(div);
+function showTaskInDOM(task) {
+    const sContainer = document.querySelector('.container');
+    const p = document.createElement('p');
+    const ck = document.createElement('input');
+    ck.type = 'checkbox';
+    ck.addEventListener('change', () => {
+        if (ck.checked) {
+            task.status = 'completed';
+            updateArray();
+        }
+    });
+    p.textContent = task.name;
+    sContainer.appendChild(p);
+    sContainer.appendChild(ck);
 }
 
 // STORAGE AREAS
@@ -48,7 +60,10 @@ function pushToStorage() {
 }
 
 function loadTaskFromStorage() {
-    taskArray = JSON.parse(localStorage.getItem('tasks'));
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (storedTasks) {
+        taskArray = storedTasks;
+    }
 }
 
 // UTILS
@@ -61,25 +76,23 @@ function removeItemOnce(arr, value) {
 }
 
 function updateArray() {
-    taskArray.forEach((element) => {
-        if (element.status === 'completed') {
-            removeItemOnce(taskArray, element);
-        }
-    });
+    taskArray = taskArray.filter(element => element.status !== 'completed');
     pushToStorage();
+    refreshDOM();
 }
 
-// ONE PAGE LOAD & SHOW TASKS FROM Local Storage
-if (taskArray[0] != undefined) {
-    window.onload = function () {
-        const body = document.querySelector('body')
-        loadTaskFromStorage()
-        taskArray.forEach((item) => {
-            const div = document.createElement('div');
-            div.textContent = item.name;
-            body.appendChild(div);
-        });  
-    }
+// REFRESH DOM
+function refreshDOM() {
+    container.innerHTML = '';  // Clear the current tasks
+    taskArray.forEach((task) => {
+        showTaskInDOM(task);
+    });
+}
+
+// PAGE LOAD: SHOW TASKS FROM LOCAL STORAGE
+window.onload = function () {
+    loadTaskFromStorage();
+    refreshDOM();
 }
 
 // let task = new createTask('Wash', '2024-07-15', 'not started');
