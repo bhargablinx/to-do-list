@@ -31,6 +31,7 @@ function app() {
 function addTask() {
     const input = document.querySelector('.input-field');
     let taskName = input.value;
+    input.value ='';
     let task = new Task(taskName, 'due date', 'not started');
     task.addToArray();
     pushToStorage();
