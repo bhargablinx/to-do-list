@@ -60,6 +60,7 @@
 
 hr {
   color: rgba(128, 128, 128, 0.25);
+  margin: 35px 0;
 }
 
 /* Left Side Bar */
@@ -88,15 +89,34 @@ hr {
   width: 200px;
 }
 
+/* Popups */
 
+.project-popup {
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: auto;
+  border: 2px solid gray;
+  border-radius: 20px;
+  padding: 25px;
+}
 
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
 
+.btn-field {
+  margin-top: 35px;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
-
-
-
-
-
+.btn-field button {
+  padding: 5px 15px;
+  cursor: pointer;
+}
 
 
 
