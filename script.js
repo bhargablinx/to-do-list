@@ -39,17 +39,3 @@ function pullFromDB() {
     const responseModi = JSON.parse(response);
     return responseModi;
 }
-
-addProjectBtn.addEventListener("click", () => {
-    document.querySelector(".project-popup").style.display = "block";
-});
-
-addTaskBtn.addEventListener("click", () => {
-    console.log("Add task pop up");
-    
-});
-
-document.querySelector(".clear-btn").addEventListener("click", () => {
-    document.querySelector(".project-popup").style.display = "none";
-    
-})
