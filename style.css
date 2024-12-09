@@ -67,8 +67,9 @@ hr {
 
 .left-sidebar {
     flex: 1;
-    border: 2px solid gray;
+    border: 2px solid rgba(128, 128, 128, 0.409);
     padding: 25px;
+    width: auto;
 }
 
 .left-sidebar .title {
@@ -128,6 +129,5 @@ hr {
 
 .main {
   flex: 4;
-  border: 1px solid red;
   padding: 25px;
 }

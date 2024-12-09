@@ -42,11 +42,27 @@ function pullFromDB() {
     return responseModi;
 }
 
+function clearEntries() {
+    document.querySelector(".proj-name").value = "";
+    document.querySelector(".proj-due").value = "";
+}
+
 projPopBtn.addEventListener("click", () => {
-    console.log("Add project popup");
     projectPopUp.style.display = "block";
 })
 
 document.querySelector(".clear-entries-btn").addEventListener("click", () => {
+    clearEntries();
     projectPopUp.style.display = "none";
+})
+
+document.querySelector(".add-project-btn").addEventListener("click", () => {
+
+    const pName = document.querySelector(".proj-name").value;
+    const pDue = document.querySelector(".proj-due").value;
+    const archive = false; // default value of archive
+    let proj = new Projects(pName, pDue, archive);
+    ProjectArr.push(proj);
+    projectPopUp.style.display = "none";
+    clearEntries();  
 })
