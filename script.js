@@ -53,17 +53,28 @@ function getProjectNames() {
     }
 }
 
+function toggleDisableBtn(btn) {
+    if (btn.disabled == true) {
+        btn.disabled = false;
+    } else {
+        btn.disabled = true;
+    }    
+}
+
 projPopBtn.addEventListener("click", () => {
     projectPopUp.style.display = "block";
+    toggleDisableBtn(taskPopBtn);
 })
 
 taskPopBtn.addEventListener("click", () => {
     taskPopUp.style.display = "block";
+    toggleDisableBtn(projPopBtn);
 })
 
 document.querySelector(".clear-entries-btn").addEventListener("click", () => {
     clearEntries();
     projectPopUp.style.display = "none";
+    toggleDisableBtn(taskPopBtn)
 })
 
 document.querySelector(".add-project-btn").addEventListener("click", () => {
@@ -79,6 +90,7 @@ document.querySelector(".add-project-btn").addEventListener("click", () => {
 document.querySelector(".clear-task-entries-btn").addEventListener("click", () => {
     clearEntries();
     taskPopUp.style.display = "none";
+    toggleDisableBtn(projPopBtn)
 })
 
 document.querySelector(".add-task-btn").addEventListener("click", () => {
