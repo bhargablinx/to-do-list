@@ -1,6 +1,11 @@
 const ProjectArr = [];
 const TaskArr = [];
 
+const projPopBtn = document.querySelector(".project-popup-btn");
+const taskPopBtn = document.querySelector(".task-popup-btn");
+const projectPopUp = document.querySelector(".project-popup");
+const taskPopUp = document.querySelector(".task-popup");
+
 class Projects {
     constructor (name, dueDate, archive) {
         this.name = name;
@@ -36,3 +41,12 @@ function pullFromDB() {
     const responseModi = JSON.parse(response);
     return responseModi;
 }
+
+projPopBtn.addEventListener("click", () => {
+    console.log("Add project popup");
+    projectPopUp.style.display = "block";
+})
+
+document.querySelector(".clear-entries-btn").addEventListener("click", () => {
+    projectPopUp.style.display = "none";
+})
