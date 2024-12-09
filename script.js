@@ -1,9 +1,6 @@
 const ProjectArr = [];
 const TaskArr = [];
 
-const addProjectBtn = document.querySelector(".add-project")
-const addTaskBtn = document.querySelector(".add-task")
-
 class Projects {
     constructor (name, dueDate, archive) {
         this.name = name;
