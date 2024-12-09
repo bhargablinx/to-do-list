@@ -47,8 +47,18 @@ function clearEntries() {
     document.querySelector(".proj-due").value = "";
 }
 
+function getProjectNames() {
+    for (item of ProjectArr) {
+        console.log(item.name);
+    }
+}
+
 projPopBtn.addEventListener("click", () => {
     projectPopUp.style.display = "block";
+})
+
+taskPopBtn.addEventListener("click", () => {
+    taskPopUp.style.display = "block";
 })
 
 document.querySelector(".clear-entries-btn").addEventListener("click", () => {
@@ -57,7 +67,6 @@ document.querySelector(".clear-entries-btn").addEventListener("click", () => {
 })
 
 document.querySelector(".add-project-btn").addEventListener("click", () => {
-
     const pName = document.querySelector(".proj-name").value;
     const pDue = document.querySelector(".proj-due").value;
     const archive = false; // default value of archive
@@ -65,4 +74,13 @@ document.querySelector(".add-project-btn").addEventListener("click", () => {
     ProjectArr.push(proj);
     projectPopUp.style.display = "none";
     clearEntries();  
+})
+
+document.querySelector(".clear-task-entries-btn").addEventListener("click", () => {
+    clearEntries();
+    taskPopUp.style.display = "none";
+})
+
+document.querySelector(".add-task-btn").addEventListener("click", () => {
+      
 })

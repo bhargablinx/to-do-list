@@ -34,6 +34,29 @@
                     <button class="clear-entries-btn"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
+            <div class="task-popup">
+                <div class="title">Add Task Here!!</div>
+                <div class="field">
+                    <label>Name:</label>
+                    <input type="text" class="task-name" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label>Due Date</label>
+                    <input type="date" class="task-due" autocomplete="off">
+                </div>
+                <div class="field project-field-in-task">
+                    <select>
+                        <option value="undefined" disabled selected>Select Project</option>
+                        <!-- Pull project from ProjectArr and just show the name -->
+                        <option value="">Project 1</option>
+                        <option value="">Project 2</option>
+                    </select>
+                </div>
+                <div class="field btn-field">
+                    <button class="add-task-btn"><i class="fa-solid fa-plus"></i></button>
+                    <button class="clear-task-entries-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
         </section>
         <section class="main">
         </section>
