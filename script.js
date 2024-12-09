@@ -47,18 +47,23 @@ function clearEntries() {
     document.querySelector(".proj-due").value = "";
 }
 
-function getProjectNames() {
-    for (item of ProjectArr) {
-        console.log(item.name);
-    }
-}
-
 function toggleDisableBtn(btn) {
     if (btn.disabled == true) {
         btn.disabled = false;
     } else {
         btn.disabled = true;
     }    
+}
+
+function showProjectsInProjectField() {
+    const projectContainer = document.querySelector(".proj-field-container");
+    for (item of ProjectArr) {
+        const name = item.name;
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        projectContainer.appendChild(option);
+    }
 }
 
 projPopBtn.addEventListener("click", () => {
@@ -69,6 +74,7 @@ projPopBtn.addEventListener("click", () => {
 taskPopBtn.addEventListener("click", () => {
     taskPopUp.style.display = "block";
     toggleDisableBtn(projPopBtn);
+    showProjectsInProjectField();
 })
 
 document.querySelector(".clear-entries-btn").addEventListener("click", () => {
