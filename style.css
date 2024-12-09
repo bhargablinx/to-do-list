@@ -1,0 +1,130 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+  }
+  
+  body {
+    /* 3. Add accessible line-height */
+    line-height: 1.5;
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* 5. Improve media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* 6. Inherit fonts for form controls */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  /* 7. Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  /* 8. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  /*
+    9. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  ol, ul {
+	list-style: none;
+}
+
+  /* Main CSS Starts Here!!! */
+
+hr {
+    color: rgba(128, 128, 128, 0.214);
+}
+
+.container {
+    display: flex;
+    gap: 25px;
+    height: 100vh;
+}
+
+.left-sidebar {
+    flex: 1;
+    border: 2px solid gray;
+    padding: 25px;
+}
+
+
+.left-sidebar .title {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.quick-navigation {
+    margin: 25px;
+}
+
+.quick-navigation .title {  
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.all-btns {
+    margin-top: 15px;
+}
+
+.btn {
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+
+.main {
+    flex: 4;
+    border: 1px solid red;
+    padding: 25px;
+}
+
+/* Pop Up */
+
+.project-popup {
+    display: none;
+    position: absolute;
+    width: 300px;
+    /* min-height: 200px; */
+    height: auto;
+    border: 2px solid gray;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.add-project {
+    margin-top: 20px;
+}
+
+.project-popup .title {
+    font-size: 18px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: bold;
+}
