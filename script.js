@@ -47,6 +47,12 @@ function clearEntries() {
     document.querySelector(".proj-due").value = "";
 }
 
+function clearTaskEntries() {
+    document.querySelector(".task-name").value = "";
+    document.querySelector(".task-due").value = "";
+    document.querySelector(".proj-field-container").value = "";
+}
+
 function toggleDisableBtn(btn) {
     if (btn.disabled == true) {
         btn.disabled = false;
@@ -90,15 +96,24 @@ document.querySelector(".add-project-btn").addEventListener("click", () => {
     let proj = new Projects(pName, pDue, archive);
     ProjectArr.push(proj);
     projectPopUp.style.display = "none";
-    clearEntries();  
+    clearEntries();
+    toggleDisableBtn(taskPopBtn);
 })
 
 document.querySelector(".clear-task-entries-btn").addEventListener("click", () => {
-    clearEntries();
+    clearTaskEntries();
     taskPopUp.style.display = "none";
     toggleDisableBtn(projPopBtn)
 })
 
 document.querySelector(".add-task-btn").addEventListener("click", () => {
-      
+    const tName = document.querySelector(".task-name").value;
+    const tDue = document.querySelector(".task-due").value;
+    const tProject = document.querySelector(".proj-field-container").value;
+    const status = false;
+    let task = new Task(tName, tDue, tProject, status);
+    TaskArr.push(task);
+    taskPopUp.style.display = "none";
+    clearTaskEntries();
+    toggleDisableBtn(projPopBtn);
 })
