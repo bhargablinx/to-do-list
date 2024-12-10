@@ -1,5 +1,9 @@
-const ProjectArr = [];
-const TaskArr = [];
+let ProjectArr = [];
+let TaskArr = [];
+
+if (pullFromDB(0) != null) ProjectArr = pullFromDB(0);
+if (pullFromDB(1) != null) TaskArr = pullFromDB(1);
+DOM()
 
 const projPopBtn = document.querySelector(".project-popup-btn");
 const taskPopBtn = document.querySelector(".task-popup-btn");
@@ -98,6 +102,10 @@ function DOM() {
         projDue.className = "due";
         projDue.textContent = item.dueDate;
 
+        projectNavCont.appendChild(projTittle);
+        projectNavCont.appendChild(projDue);
+        projectCard.appendChild(projectNavCont);
+        main.appendChild(projectCard)
         for (itm of TaskArr) {
             if (itm.project == item.name) {
                 // Task Container
@@ -118,11 +126,7 @@ function DOM() {
                 field.appendChild(check);
                 field.appendChild(tasDue);
                 taskCont.appendChild(field);
-                projectNavCont.appendChild(projTittle);
-                projectNavCont.appendChild(projDue);
-                projectCard.appendChild(projectNavCont);
                 projectCard.appendChild(taskCont);
-                main.appendChild(projectCard)
             }
         }
 
@@ -156,8 +160,7 @@ document.querySelector(".add-project-btn").addEventListener("click", () => {
     clearEntries();
     projectPopUp.style.display = "none";
     toggleDisableBtn(taskPopBtn);
-    console.log(ProjectArr);
-
+    DOM()
 })
 
 document.querySelector(".clear-task-entries-btn").addEventListener("click", () => {
@@ -177,4 +180,5 @@ document.querySelector(".add-task-btn").addEventListener("click", () => {
     taskPopUp.style.display = "none";
     clearTaskEntries();
     toggleDisableBtn(projPopBtn);
+    DOM()
 })
