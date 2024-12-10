@@ -31,13 +31,13 @@ class Task {
     }
 }
 
-function pushToDB(data) {
+function pushToDB(data, position) {
     const dataModified = JSON.stringify(data);
-    localStorage.setItem(0, dataModified);
+    localStorage.setItem(position, dataModified);
 }
 
-function pullFromDB() {
-    const response = localStorage.getItem(0);
+function pullFromDB(position) {
+    const response = localStorage.getItem(position);
     const responseModi = JSON.parse(response);
     return responseModi;
 }
@@ -152,6 +152,7 @@ document.querySelector(".add-project-btn").addEventListener("click", () => {
     const archive = false; // default value of archive
     let proj = new Projects(pName, pDue, archive);
     ProjectArr.push(proj);
+    pushToDB(ProjectArr, 0);
     clearEntries();
     projectPopUp.style.display = "none";
     toggleDisableBtn(taskPopBtn);
@@ -172,6 +173,7 @@ document.querySelector(".add-task-btn").addEventListener("click", () => {
     const status = false;
     let task = new Task(tName, tDue, tProject, status);
     TaskArr.push(task);
+    pushToDB(TaskArr, 1);
     taskPopUp.style.display = "none";
     clearTaskEntries();
     toggleDisableBtn(projPopBtn);
