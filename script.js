@@ -119,6 +119,7 @@ function DOM() {
                 name.textContent = itm.tName;
                 const check = document.createElement("input")
                 check.type = "checkbox";
+                check.className = "task-check";
                 const tasDue = document.createElement("div");
                 tasDue.className = "tas-due";
                 tasDue.textContent = itm.tDueDate;
@@ -182,3 +183,26 @@ document.querySelector(".add-task-btn").addEventListener("click", () => {
     toggleDisableBtn(projPopBtn);
     DOM()
 })
+
+const allCheckBox = document.querySelectorAll(".task-check");
+
+allCheckBox.forEach((item) => {
+    item.addEventListener("change", () => {
+        console.log("Pop");
+        const parentNode = item.parentElement;
+        const taskNameToDelete = parentNode.children[0].textContent; // Get task name
+        deleteTaskFromArray(taskNameToDelete); // Remove from array
+        parentNode.remove(); // Remove element from DOM
+    });
+});
+
+function deleteTaskFromArray(taskName) {
+    // Iterate through the TaskArr to find and remove the task
+    for (let i = 0; i < TaskArr.length; i++) {
+        if (TaskArr[i].tName === taskName) {
+            TaskArr.splice(i, 1); // Remove the task at index i
+            break; // Stop after removing the first match
+        }
+    }
+    pushToDB(TaskArr, 1)
+}
