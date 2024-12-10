@@ -84,20 +84,20 @@ function showProjectsInProjectField() {
 }
 
 function DOM() {
-    // main
     const main = document.querySelector(".main");
     main.innerHTML = "";
 
     for (item of ProjectArr) {
         const projectCard = document.createElement("div");
-        // Project card
         projectCard.className = "project-card";
+
         const projectNavCont = document.createElement("div");
-        // Project Navbar
         projectNavCont.className = "project-nav-container";
+
         const projTittle = document.createElement("div");
         projTittle.className = "title";
         projTittle.textContent = item.name;
+
         const projDue = document.createElement("div");
         projDue.className = "due";
         projDue.textContent = item.dueDate;
@@ -105,34 +105,40 @@ function DOM() {
         projectNavCont.appendChild(projTittle);
         projectNavCont.appendChild(projDue);
         projectCard.appendChild(projectNavCont);
-        main.appendChild(projectCard)
+        main.appendChild(projectCard);
+
         for (itm of TaskArr) {
             if (itm.project == item.name) {
-                // Task Container
                 const taskCont = document.createElement("div");
                 taskCont.className = "task-container";
-                // Field
+
                 const field = document.createElement("div");
                 field.className = "field";
+
                 const name = document.createElement("div");
                 name.className = "name";
                 name.textContent = itm.tName;
-                const check = document.createElement("input")
+
+                const check = document.createElement("input");
                 check.type = "checkbox";
                 check.className = "task-check";
+                check.addEventListener("change", () => handleTaskCheck(check));
+
                 const tasDue = document.createElement("div");
                 tasDue.className = "tas-due";
                 tasDue.textContent = itm.tDueDate;
+
                 field.appendChild(name);
                 field.appendChild(check);
                 field.appendChild(tasDue);
+
                 taskCont.appendChild(field);
                 projectCard.appendChild(taskCont);
             }
         }
-
     }
 }
+
 
 projPopBtn.addEventListener("click", () => {
     projectPopUp.style.display = "block";
@@ -184,17 +190,14 @@ document.querySelector(".add-task-btn").addEventListener("click", () => {
     DOM()
 })
 
-const allCheckBox = document.querySelectorAll(".task-check");
+function handleTaskCheck(item) {
+    console.log("Pop");
+    const parentNode = item.parentElement;
+    const taskNameToDelete = parentNode.children[0].textContent; // Get task name
+    deleteTaskFromArray(taskNameToDelete); // Remove from array
+    parentNode.remove(); // Remove element from DOM
+}
 
-allCheckBox.forEach((item) => {
-    item.addEventListener("change", () => {
-        console.log("Pop");
-        const parentNode = item.parentElement;
-        const taskNameToDelete = parentNode.children[0].textContent; // Get task name
-        deleteTaskFromArray(taskNameToDelete); // Remove from array
-        parentNode.remove(); // Remove element from DOM
-    });
-});
 
 function deleteTaskFromArray(taskName) {
     // Iterate through the TaskArr to find and remove the task
