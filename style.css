@@ -122,9 +122,10 @@ hr {
 }
 
 .btn-field {
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .btn-field button {
@@ -152,6 +153,15 @@ hr {
 .btn-field button:last-child:hover {
   background-color: #0056b3;
 }
+
+.proj-field-container {
+  background-color: rgba(128, 128, 128, 0.146);
+  border-radius: 5px;
+  border: 1px solid gray;
+  color: rgb(66, 66, 66);
+  padding: 3px;
+}
+
 
 /* Tasks */
 .project-field-in-task {

@@ -69,6 +69,7 @@ function showProjectsInProjectField() {
     const projectContainer = document.querySelector(".proj-field-container");
     projectContainer.innerHTML = "";     // Clear existing options (optional, if needed)
     const defaultOption = document.createElement("option");
+    defaultOption.className = "def-opt"
     defaultOption.textContent = "Select Project";
     defaultOption.value = "undefined"
     defaultOption.disabled = true;
