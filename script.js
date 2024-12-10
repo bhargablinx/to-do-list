@@ -63,6 +63,13 @@ function toggleDisableBtn(btn) {
 
 function showProjectsInProjectField() {
     const projectContainer = document.querySelector(".proj-field-container");
+    projectContainer.innerHTML = "";     // Clear existing options (optional, if needed)
+    const defaultOption = document.createElement("option");
+    defaultOption.textContent = "Select Project";
+    defaultOption.value = "undefined"
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    projectContainer.appendChild(defaultOption)
     for (item of ProjectArr) {
         const name = item.name;
         const option = document.createElement("option");
@@ -95,9 +102,11 @@ document.querySelector(".add-project-btn").addEventListener("click", () => {
     const archive = false; // default value of archive
     let proj = new Projects(pName, pDue, archive);
     ProjectArr.push(proj);
-    projectPopUp.style.display = "none";
     clearEntries();
+    projectPopUp.style.display = "none";
     toggleDisableBtn(taskPopBtn);
+    console.log(ProjectArr);
+    
 })
 
 document.querySelector(".clear-task-entries-btn").addEventListener("click", () => {
