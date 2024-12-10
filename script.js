@@ -79,6 +79,10 @@ function showProjectsInProjectField() {
     }
 }
 
+function DOM() {
+    
+}
+
 projPopBtn.addEventListener("click", () => {
     projectPopUp.style.display = "block";
     toggleDisableBtn(taskPopBtn);

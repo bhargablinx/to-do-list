@@ -131,4 +131,54 @@ hr {
 .main {
   flex: 4;
   padding: 25px;
+  margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Project Card */
+
+.project-card {
+  border: 3px solid rgba(128, 128, 128, 0.487);
+  width: 400px;
+  height: 250px;
+  padding: 25px 30px;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.project-card .title {
+  font-weight: bold;
+}
+
+.project-nav-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-container {
+  margin-top: 25px;
+}
+
+.task-container .field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.487);
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.task-container .field .name {
+  margin-right: 25px;
+}
+
+.tas-due {
+  margin-left: 60px;
+}
+
+.task-check {
+  width: 18px;
+  height: 18px;
 }
