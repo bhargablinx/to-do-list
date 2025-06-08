@@ -42,7 +42,7 @@ function renderTask(task) {
     if (task.isCompleted) {
         div.innerHTML = `
         <div class="flex items-center gap-3">
-            <input type="checkbox" class="checkbox" id="${task.id}" />
+            <input checked type="checkbox" class="checkbox" id="${task.id}" />
             <label for="${task.id}" class="font-semibold line-through">${task.name}</label>
         </div>
         <button class="delete-btn text-xs bg-red-500 p-1 px-2 rounded-4xl cursor-pointer hover:bg-red-700">delete</button>
