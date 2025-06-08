@@ -1,4 +1,4 @@
-const allTasks = [];
+let allTasks = [];
 
 function createTask(taskName) {
     const task = {
@@ -9,6 +9,7 @@ function createTask(taskName) {
 
     allTasks.push(task);
     renderTask(task);
+    addToDB();
 }
 
 function taskTaskInput() {
@@ -18,6 +19,19 @@ function taskTaskInput() {
         createTask(taskName);
         document.querySelector(".task-inputbox").value = "";
     }
+}
+
+function addToDB() {
+    const data = JSON.stringify(allTasks);
+    localStorage.setItem("allTasks", data);
+}
+
+function getFromDB() {
+    const response = JSON.parse(localStorage.getItem("allTasks"));
+    allTasks = response;
+    allTasks.forEach((task) => {
+        renderTask(task);
+    });
 }
 
 function renderTask(task) {
@@ -49,6 +63,7 @@ function renderTask(task) {
         if (checkbox.checked) {
             label.classList.add("line-through");
             task.isCompleted = true;
+            addToDB();
         } else {
             label.classList.remove("line-through");
         }
@@ -59,6 +74,7 @@ function renderTask(task) {
         div.remove();
         const index = allTasks.findIndex((t) => t.id === task.id);
         if (index !== -1) allTasks.splice(index, 1);
+        addToDB();
     });
 
     taskContainer.appendChild(div);
