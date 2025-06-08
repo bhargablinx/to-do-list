@@ -29,6 +29,7 @@ function addToDB() {
 function getFromDB() {
     const response = JSON.parse(localStorage.getItem("allTasks"));
     allTasks = response;
+    document.querySelector(".task-container").innerHTML = "";
     allTasks.forEach((task) => {
         renderTask(task);
     });
@@ -84,3 +85,5 @@ function renderTask(task) {
 document
     .querySelector(".add-task-btn")
     .addEventListener("click", taskTaskInput);
+
+getFromDB();
