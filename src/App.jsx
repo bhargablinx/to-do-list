@@ -5,6 +5,18 @@ function App() {
     const [currentTask, setCurrentTask] = useState("");
     const [allTasks, setAllTasks] = useState(["Clean card", "Wash cloths"]);
 
+    function handleDelete(indexToRemove) {
+        setAllTasks((prevTasks) =>
+            prevTasks.filter((_, idx) => idx !== indexToRemove)
+        );
+    }
+
+    function handleAddTask() {
+        if (currentTask.trim() === "") return;
+        setAllTasks((prev) => [...prev, currentTask]);
+        setCurrentTask("");
+    }
+
     return (
         <div className="bg-slate-900 text-slate-50 flex justify-center items-center h-screen">
             <div className="border border-slate-700 w-[300px] h-fit min-h-[400px] rounded-2xl p-3 px-5">
@@ -20,20 +32,21 @@ function App() {
                         className="task-inputbox border p-2 text-sm flex-1 rounded-lg focus:outline-1 focus:outline-slate-500 text-slate-400"
                     />
                     <button
-                        onClick={() => {
-                            const tmp = [...allTasks, currentTask];
-                            setAllTasks([...tmp]);
-                            setCurrentTask("");
-                        }}
+                        onClick={handleAddTask}
                         className="flex-1 rounded-2xl cursor-pointer text-sm bg-slate-200 text-slate-900 font-semibold hover:text-slate-900 hover:bg-slate-300"
                     >
                         Add
                     </button>
                 </div>
                 <div className="my-8 text-sm text-slate-200 space-y-3">
-                    {allTasks.map((elm, idx) => {
-                        return <Task key={idx} id={idx} taskName={elm} />;
-                    })}
+                    {allTasks.map((task, idx) => (
+                        <Task
+                            key={idx}
+                            id={`task-${idx}`}
+                            taskName={task}
+                            onDelete={() => handleDelete(idx)}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
