@@ -29,7 +29,9 @@ function App() {
                     </button>
                 </div>
                 <div className="my-8 text-sm text-slate-200 space-y-3">
-                    <Task />
+                    {allTasks.map((elm, idx) => {
+                        return <Task key={idx} id={idx} taskName={elm} />;
+                    })}
                 </div>
             </div>
         </div>
