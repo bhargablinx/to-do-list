@@ -21,7 +21,9 @@ function App() {
                     />
                     <button
                         onClick={() => {
-                            console.log(currentTask, allTasks);
+                            const tmp = [...allTasks, currentTask];
+                            setAllTasks([...tmp]);
+                            setCurrentTask("");
                         }}
                         className="flex-1 rounded-2xl cursor-pointer text-sm bg-slate-200 text-slate-900 font-semibold hover:text-slate-900 hover:bg-slate-300"
                     >
