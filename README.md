@@ -1,12 +1,62 @@
-# React + Vite
+# React To-Do List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple and responsive To-Do List application built using **React** and **Tailwind CSS**. It demonstrates modern React practices such as component-based architecture, state management using hooks, and dynamic UI updates with user interaction.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+-   Add tasks to the list
+-   Delete tasks with a single click
+-   Mark tasks as completed with a checkbox (strike-through effect)
+-   Clean and minimal user interface
+-   Responsive design using Tailwind CSS
+-   Unique task IDs for efficient rendering
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Preview
+
+![](./backup/todolist.png)
+
+## Technologies Used
+
+-   React (with Vite as the build tool)
+-   Tailwind CSS
+-   JavaScript (ES6+)
+-   HTML5 + JSX
+
+---
+
+## Getting Started
+
+**Prerequisites:**
+
+-   Node.js and npm installed on your machine
+-   A code editor like Visual Studio Code
+
+**Steps to run the app locally:**
+
+1. Clone the repository:
+
+    ```
+    git clone https://github.com/yourusername/react-todo-app.git
+    cd react-todo-app
+    ```
+
+2. Install dependencies:
+
+    ```
+    npm install
+    ```
+
+3. Start the development server:
+
+    ```
+    npm run dev
+    ```
+
+4. Open your browser and go to:
+   [http://localhost:5173](http://localhost:5173)
+
+---
